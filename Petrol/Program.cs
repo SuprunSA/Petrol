@@ -8,9 +8,7 @@ namespace Petrol
         {
             Console.WriteLine("Введите объем цистерны (изначальный объём - 0)>>>");
             var tank = new Tank(int.Parse(Console.ReadLine()));
-            Action<int> Add = tank.Add;
-            Action<int> Take = tank.Take;
-            while (true) Read(Add, Take);
+            while (true) Read(tank.Add, tank.Take);
         }
 
         static void Read(Action<int> Add, Action<int> Take)
@@ -35,9 +33,8 @@ namespace Petrol
 
         static void DoSth(Action<int> action)
         {
-            int t;
             Console.WriteLine("Введите объём >>>");
-            if (int.TryParse(Console.ReadLine(), out t))
+            if (int.TryParse(Console.ReadLine(), out int t))
             {
                 action(t);
             }
